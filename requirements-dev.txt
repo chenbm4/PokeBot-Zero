@@ -1,0 +1,14 @@
+black==23.12.1
+flake8
+isort==5.13.2
+nbsphinx
+pre-commit
+pyright==1.1.349
+pytest
+pytest-asyncio
+pytest-cov
+pytest-timeout
+sphinx
+sphinx_rtd_theme
+twine
+wheel
