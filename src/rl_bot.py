@@ -40,6 +40,14 @@ class SimpleRLPlayer(Gen8EnvSinglePlayer):
             current_battle, fainted_value=2.0, hp_value=1.0, victory_value=30.0
         )
 
+        """Embed the battle state into an observation vector.
+
+    Args:
+        battle (AbstractBattle): The current state of the battle.
+
+    Returns:
+        np.ndarray: The observation vector representing the current battle state.
+    """
     def embed_battle(self, battle: AbstractBattle) -> ObsType:
         # -1 indicates that the move does not have a base power
         # or is not available
