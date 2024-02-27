@@ -153,6 +153,7 @@ def create_environments():
         exploration_fraction=0.1,
         exploration_final_eps=0.05,
         verbose=1,
+    return model
     )
 
     # Training the model
