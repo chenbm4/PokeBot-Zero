@@ -23,6 +23,23 @@ from stable_baselines3.common.evaluation import evaluate_policy
 
 from src.rl_bot import CustomFeatureExtractor, SimpleRLPlayer
 from unittest.mock import MagicMock
+import numpy as np
+import torch
+import gym
+from stable_baselines3.common.evaluation import evaluate_policy
+import tabulate
+from poke_env.environment.abstract_battle import AbstractBattle
+from poke_env.data.gen_data import GenData
+from poke_env.player import (
+    Gen8EnvSinglePlayer,
+    MaxBasePowerPlayer,
+    ObsType,
+    RandomPlayer,
+    SimpleHeuristicsPlayer,
+    cross_evaluate,
+    evaluate_player
+)
+from unittest.mock import MagicMock
 
 import tabulate
 
