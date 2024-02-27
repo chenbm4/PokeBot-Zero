@@ -26,7 +26,7 @@ git clone <https://github.com/chenbm4/PokeBot-Zero.git>
 cd <PokeBot-Zero>
 Initialize Submodules:
 
-bash
+```bash
 Copy code
 ```
 git submodule update --init --recursive
