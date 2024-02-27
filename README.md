@@ -32,21 +32,18 @@ Copy code
 git submodule update --init --recursive
 Create and activate a virtual environment:
 
-bash
-Copy code
+```
 python3 -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 Install dependencies:
 
-bash
-Copy code
+```
 pip install -r requirements.txt
 ## For development:
 pip install -r requirements-dev.txt
 Setting Up Pokémon Showdown
 Clone and setup the Pokémon Showdown server:
-bash
-Copy code
+```
 git clone https://github.com/smogon/pokemon-showdown.git
 cd pokemon-showdown
 npm install
@@ -63,7 +60,6 @@ Owner:
 
 Guangcong Luo [Zarel] - Development, Design, Sysadmin
 Staff:
-
 Andrew Werner [HoeenHero] - Development
 Annika L. [Annika] - Development
 Chris Monsanto [chaos] - Development, Sysadmin
