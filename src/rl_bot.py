@@ -95,7 +95,22 @@ async def test_environment():
 async def main():
     # First test the environment to ensure the class is consistent
     # with the OpenAI API
+    create_environments()
+
+def create_environments():
+    # Function to create training and evaluation environments
+    """
+    Create training and evaluation environments for the RL model.
+    """
     opponent = RandomPlayer(battle_format="gen8randombattle", max_concurrent_battles=0)
+    # Move the existing code here
+    train_env = SimpleRLPlayer(
+        battle_format="gen8randombattle", opponent=opponent, start_challenging=True
+    )
+    opponent = RandomPlayer(battle_format="gen8randombattle", max_concurrent_battles=0)
+    eval_env = SimpleRLPlayer(
+        battle_format="gen8randombattle", opponent=opponent, start_challenging=True
+    )
     test_env = SimpleRLPlayer(
         battle_format="gen8randombattle", start_challenging=True, opponent=opponent
     )
