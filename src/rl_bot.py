@@ -154,6 +154,8 @@ def create_environments():
         exploration_final_eps=0.05,
         verbose=1,
     return model
+
+def train_model\(\):
     )
 
     # Training the model
