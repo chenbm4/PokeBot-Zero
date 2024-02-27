@@ -1,7 +1,8 @@
-poke-env
+git+https://github.com/hsahovic/poke-env/
 gymnasium
 numpy
 orjson
 requests
 tabulate
 websockets>=8.0
+stable-baselines3

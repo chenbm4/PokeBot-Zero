@@ -12,3 +12,4 @@ sphinx
 sphinx_rtd_theme
 twine
 wheel
+tabulate
