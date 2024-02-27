@@ -25,11 +25,29 @@ from poke_env.player import (
 
 
 class SimpleRLPlayer(Gen8EnvSinglePlayer):
+    """
+    Calculate the reward for the current battle state.
+
+    Args:
+        last_battle (AbstractBattle): The state of the battle before the current action.
+        current_battle (AbstractBattle): The current state of the battle after the action.
+
+    Returns:
+        float: The reward for the current battle state.
+    """
     def calc_reward(self, last_battle, current_battle) -> float:
         return self.reward_computing_helper(
             current_battle, fainted_value=2.0, hp_value=1.0, victory_value=30.0
         )
 
+        """Embed the battle state into an observation vector.
+
+    Args:
+        battle (AbstractBattle): The current state of the battle.
+
+    Returns:
+        np.ndarray: The observation vector representing the current battle state.
+    """
     def embed_battle(self, battle: AbstractBattle) -> ObsType:
         # -1 indicates that the move does not have a base power
         # or is not available
@@ -62,6 +80,11 @@ class SimpleRLPlayer(Gen8EnvSinglePlayer):
         )
         return np.float32(final_vector)
 
+        """Describe the observation space for the embedding.
+
+    Returns:
+        Box: The observation space with low and high bounds for the embedding.
+    """
     def describe_embedding(self) -> Space:
         low = [-1, -1, -1, -1, 0, 0, 0, 0, 0, 0]
         high = [3, 3, 3, 3, 4, 4, 4, 4, 1, 1]
@@ -72,6 +95,13 @@ class SimpleRLPlayer(Gen8EnvSinglePlayer):
         )
 
 class CustomFeatureExtractor(BaseFeaturesExtractor):
+    """
+    Initialize the CustomFeatureExtractor.
+
+    Args:
+        observation_space (gym.spaces.Box): The observation space for the feature extraction.
+
+    """
     def __init__(self, observation_space: gym.spaces.Box):
         super(CustomFeatureExtractor, self).__init__(observation_space, features_dim=10)
         self.net = nn.Sequential(
@@ -81,10 +111,23 @@ class CustomFeatureExtractor(BaseFeaturesExtractor):
         )
 
     def forward(self, observations: torch.Tensor) -> torch.Tensor:
+        """
+        Forward pass of the custom feature extractor network.
+
+        Args:
+            observations (torch.Tensor): The input observations.
+
+        Returns:
+            torch.Tensor: The output tensor from the feature extractor network.
+        """
         return self.net(observations)
 
 
 async def main():
+    """
+    Main function for testing and training the RL model.
+
+    """
     # First test the environment to ensure the class is consistent
     # with the OpenAI API
     opponent = RandomPlayer(battle_format="gen8randombattle", max_concurrent_battles=0)
