@@ -41,14 +41,16 @@ Install dependencies:
 pip install -r requirements.txt
 ## For development:
 pip install -r requirements-dev.txt
-Setting Up Pokémon Showdown
+### Setting Up Pokémon Showdown
 Clone and setup the Pokémon Showdown server:
+```
 ```
 git clone https://github.com/smogon/pokemon-showdown.git
 cd pokemon-showdown
 npm install
 cp config/config-example.js config/config.js
 node pokemon-showdown start --no-security
+```
 
 Credits
 poke-env
