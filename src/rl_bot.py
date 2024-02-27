@@ -111,6 +111,15 @@ class CustomFeatureExtractor(BaseFeaturesExtractor):
         )
 
     def forward(self, observations: torch.Tensor) -> torch.Tensor:
+        """
+        Forward pass of the custom feature extractor network.
+
+        Args:
+            observations (torch.Tensor): The input observations.
+
+        Returns:
+            torch.Tensor: The output tensor from the feature extractor network.
+        """
         return self.net(observations)
 
 
