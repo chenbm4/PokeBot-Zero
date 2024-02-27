@@ -80,6 +80,11 @@ class SimpleRLPlayer(Gen8EnvSinglePlayer):
         )
         return np.float32(final_vector)
 
+        """Describe the observation space for the embedding.
+
+    Returns:
+        Box: The observation space with low and high bounds for the embedding.
+    """
     def describe_embedding(self) -> Space:
         low = [-1, -1, -1, -1, 0, 0, 0, 0, 0, 0]
         high = [3, 3, 3, 3, 4, 4, 4, 4, 1, 1]
