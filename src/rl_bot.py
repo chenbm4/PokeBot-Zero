@@ -84,12 +84,12 @@ class CustomFeatureExtractor(BaseFeaturesExtractor):
         return self.net(observations)
 
 
-async def test_environment():
-    # Test the environment to ensure the class is consistent with the OpenAI API
-    opponent = RandomPlayer(battle_format="gen8randombattle", max_concurrent_battles=0)
-    test_env = SimpleRLPlayer(battle_format="gen8randombattle", start_challenging=True, opponent=opponent)
-    check_env(test_env)
-    test_env.close()
+
+
+
+
+
+
 
 
 async def main():
@@ -97,7 +97,7 @@ async def main():
     # with the OpenAI API
     create_environments()
 
-def create_environments():
+
     # Function to create training and evaluation environments
     """
     Create training and evaluation environments for the RL model.
@@ -117,22 +117,22 @@ def create_environments():
     check_env(test_env)
     test_env.close()
 
-    """
-Evaluate the RL model against a random player.
 
-:param model: The RL model to be evaluated.
-:param eval_env: The evaluation environment.
-:param n_eval_episodes: The number of evaluation episodes.
-:param render: Whether to render the evaluation.
-"""
-    opponent = RandomPlayer(battle_format="gen8randombattle", max_concurrent_battles=0)
-    train_env = SimpleRLPlayer(
-        battle_format="gen8randombattle", opponent=opponent, start_challenging=True
-    )
-    opponent = RandomPlayer(battle_format="gen8randombattle", max_concurrent_battles=0)
-    eval_env = SimpleRLPlayer(
-        battle_format="gen8randombattle", opponent=opponent, start_challenging=True
-    )
+
+
+:
+:
+:
+:
+
+
+
+
+
+
+
+
+
 
     # Evaluate the RL model against a random player.
     n_action = train_env.action_space.n
