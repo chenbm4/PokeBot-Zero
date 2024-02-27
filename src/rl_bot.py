@@ -84,18 +84,26 @@ class CustomFeatureExtractor(BaseFeaturesExtractor):
         return self.net(observations)
 
 
+
+
+
+
+
+
+
+
 async def main():
     # First test the environment to ensure the class is consistent
     # with the OpenAI API
-    opponent = RandomPlayer(battle_format="gen8randombattle", max_concurrent_battles=0)
-    test_env = SimpleRLPlayer(
-        battle_format="gen8randombattle", start_challenging=True, opponent=opponent
-    )
-    check_env(test_env)
-    test_env.close()
+    create_environments()
 
-    # Create one environment for training and one for evaluation
+
+    # Function to create training and evaluation environments
+    """
+    Create training and evaluation environments for the RL model.
+    """
     opponent = RandomPlayer(battle_format="gen8randombattle", max_concurrent_battles=0)
+    # Move the existing code here
     train_env = SimpleRLPlayer(
         battle_format="gen8randombattle", opponent=opponent, start_challenging=True
     )
@@ -103,12 +111,34 @@ async def main():
     eval_env = SimpleRLPlayer(
         battle_format="gen8randombattle", opponent=opponent, start_challenging=True
     )
+    test_env = SimpleRLPlayer(
+        battle_format="gen8randombattle", start_challenging=True, opponent=opponent
+    )
+    check_env(test_env)
+    test_env.close()
 
-    # Compute dimensions
+
+
+
+:
+:
+:
+:
+
+
+
+
+
+
+
+
+
+
+    # Evaluate the RL model against a random player.
     n_action = train_env.action_space.n
     input_shape = (1,) + train_env.observation_space.shape
 
-    # Creating the model
+    # Create a DQN model for the RL agent.
     policy_kwargs = dict(
         features_extractor_class=CustomFeatureExtractor,
     )
@@ -130,6 +160,9 @@ async def main():
         exploration_fraction=0.1,
         exploration_final_eps=0.05,
         verbose=1,
+    return model
+
+def train_model\(\):
     )
 
     # Training the model
@@ -138,8 +171,8 @@ async def main():
 
     # Evaluating the model against random player
     print("Results against random player:")
-    mean_reward, _ = evaluate_policy(model, eval_env, n_eval_episodes=100, render=False)
-    print(f"DQN Evaluation: {eval_env.n_won_battles} victories out of {eval_env.n_finished_battles} episodes")
+    evaluate_model_max_base_power(model, eval_env)
+evaluate_model_random
 
     # Evaluating against max base power player
     second_opponent = MaxBasePowerPlayer(battle_format="gen8randombattle", max_concurrent_battles=0)
