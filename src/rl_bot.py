@@ -138,14 +138,14 @@ async def main():
 
     # Evaluating the model against random player
     print("Results against random player:")
-    mean_reward, _ = evaluate_policy(model, eval_env, n_eval_episodes=10, render=False)
+    mean_reward, _ = evaluate_policy(model, eval_env, n_eval_episodes=100, render=False)
     print(f"DQN Evaluation: {eval_env.n_won_battles} victories out of {eval_env.n_finished_battles} episodes")
 
     # Evaluating against max base power player
     second_opponent = MaxBasePowerPlayer(battle_format="gen8randombattle", max_concurrent_battles=0)
     eval_env.reset_env(restart=True, opponent=second_opponent)
     print("Results against max base power player:")
-    mean_reward, _ = evaluate_policy(model, eval_env, n_eval_episodes=10, render=False)
+    mean_reward, _ = evaluate_policy(model, eval_env, n_eval_episodes=100, render=False)
     print(f"DQN Evaluation: {eval_env.n_won_battles} victories out of {eval_env.n_finished_battles} episodes")
     eval_env.reset_env(restart=False)
 
