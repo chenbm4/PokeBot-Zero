@@ -117,7 +117,14 @@ def create_environments():
     check_env(test_env)
     test_env.close()
 
-    # Create one environment for training and one for evaluation
+    """
+Evaluate the RL model against a random player.
+
+:param model: The RL model to be evaluated.
+:param eval_env: The evaluation environment.
+:param n_eval_episodes: The number of evaluation episodes.
+:param render: Whether to render the evaluation.
+"""
     opponent = RandomPlayer(battle_format="gen8randombattle", max_concurrent_battles=0)
     train_env = SimpleRLPlayer(
         battle_format="gen8randombattle", opponent=opponent, start_challenging=True
@@ -165,7 +172,7 @@ def train_model\(\):
     # Evaluating the model against random player
     print("Results against random player:")
     mean_reward, _ = evaluate_policy(model, eval_env, n_eval_episodes=100, render=False)
-    print(f"DQN Evaluation: {eval_env.n_won_battles} victories out of {eval_env.n_finished_battles} episodes")
+evaluate_model_random
 
     # Evaluating against max base power player
     second_opponent = MaxBasePowerPlayer(battle_format="gen8randombattle", max_concurrent_battles=0)
