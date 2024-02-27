@@ -95,6 +95,13 @@ class SimpleRLPlayer(Gen8EnvSinglePlayer):
         )
 
 class CustomFeatureExtractor(BaseFeaturesExtractor):
+    """
+    Initialize the CustomFeatureExtractor.
+
+    Args:
+        observation_space (gym.spaces.Box): The observation space for the feature extraction.
+
+    """
     def __init__(self, observation_space: gym.spaces.Box):
         super(CustomFeatureExtractor, self).__init__(observation_space, features_dim=10)
         self.net = nn.Sequential(
