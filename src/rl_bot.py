@@ -25,6 +25,16 @@ from poke_env.player import (
 
 
 class SimpleRLPlayer(Gen8EnvSinglePlayer):
+    """
+    Calculate the reward for the current battle state.
+
+    Args:
+        last_battle (AbstractBattle): The state of the battle before the current action.
+        current_battle (AbstractBattle): The current state of the battle after the action.
+
+    Returns:
+        float: The reward for the current battle state.
+    """
     def calc_reward(self, last_battle, current_battle) -> float:
         return self.reward_computing_helper(
             current_battle, fainted_value=2.0, hp_value=1.0, victory_value=30.0
