@@ -134,11 +134,11 @@ Evaluate the RL model against a random player.
         battle_format="gen8randombattle", opponent=opponent, start_challenging=True
     )
 
-    # Compute dimensions
+    # Evaluate the RL model against a random player.
     n_action = train_env.action_space.n
     input_shape = (1,) + train_env.observation_space.shape
 
-    # Creating the model
+    # Create a DQN model for the RL agent.
     policy_kwargs = dict(
         features_extractor_class=CustomFeatureExtractor,
     )
@@ -171,7 +171,7 @@ def train_model\(\):
 
     # Evaluating the model against random player
     print("Results against random player:")
-    mean_reward, _ = evaluate_policy(model, eval_env, n_eval_episodes=100, render=False)
+    evaluate_model_max_base_power(model, eval_env)
 evaluate_model_random
 
     # Evaluating against max base power player
