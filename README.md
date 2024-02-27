@@ -51,7 +51,6 @@ npm install
 cp config/config-example.js config/config.js
 node pokemon-showdown start --no-security
 
-Credits
 poke-env
 This project uses the poke-env library for interacting with Pokémon Showdown. poke-env is developed by Haris Sahovic.
 
