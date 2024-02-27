@@ -124,6 +124,10 @@ class CustomFeatureExtractor(BaseFeaturesExtractor):
 
 
 async def main():
+    """
+    Main function for testing and training the RL model.
+
+    """
     # First test the environment to ensure the class is consistent
     # with the OpenAI API
     opponent = RandomPlayer(battle_format="gen8randombattle", max_concurrent_battles=0)
