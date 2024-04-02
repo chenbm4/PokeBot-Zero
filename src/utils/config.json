@@ -1,0 +1,7 @@
+{
+    "log_dir": "logs/",
+    "model_dir": "models/",
+    "n_iterations": 100,
+    "n_steps": 2048,
+    "n_eval_games": 10
+}
