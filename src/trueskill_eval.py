@@ -26,9 +26,6 @@ class RLSkillEvaluator:
             return delta
         return None
     
-    def get_leaderboard(self):
-        return {player_id: rating.mu for player_id, rating in self.players.items()}
-    
     def save_leaderboard(self, filepath):
         # Convert player ratings to a savable format
         savable_leaderboard = {player_id: {'mu': rating.mu, 'sigma': rating.sigma}

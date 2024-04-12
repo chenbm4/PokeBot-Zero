@@ -7,11 +7,26 @@ from poke_env.data.gen_data import GenData
 
 
 class RLGymEnv(Gen8EnvSinglePlayer):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, trueskill_evaluator=None, player_name=None, opponent_name=None, *args, **kwargs):
         super(RLGymEnv, self).__init__(*args, **kwargs)
         self.model = None
+        self.trueskill_evaluator = trueskill_evaluator
+        self.player_name = player_name
+        self.opponent_name = opponent_name
+
+    def set_trueskill_players(self, player_name, opponent_name):
+        self.player_name = player_name
+        self.opponent_name = opponent_name
+        self.trueskill_evaluator.add_player(player_name)
+        self.trueskill_evaluator.add_player(opponent_name)
 
     def calc_reward(self, last_battle, current_battle) -> float:
+        if self.trueskill_evaluator and current_battle.finished:
+            if current_battle.won:
+                self.trueskill_evaluator.update_skills(self.player_name, self.opponent_name)
+            else:
+                self.trueskill_evaluator.update_skills(self.opponent_name, self.player_name)
+                
         return self.reward_computing_helper(
             current_battle, fainted_value=2.0, hp_value=1.0, victory_value=30.0
         )
